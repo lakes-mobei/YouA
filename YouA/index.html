@@ -27,24 +27,35 @@
 	<meta name="Keywords" content="网上购物,网上商城,手机,笔记本,电脑,MP3,CD,VCD,DV,相机,数码,配件,手表,存储卡,京东">
 	<style type="text/css">
 		*{margin: 0px;padding: 0px;}
-		#box{width: 32px;height: 360px;position: fixed;top: 300px;left: 30px;}
+		#box{width: 32px;height: 360px;position: fixed;top: 200px;left: 30px;}
 		#box li{list-style: none;width: 32px;height: 32px;border-bottom: 1px dotted #CCC; font-size: 14px;line-height: 32px;
-		       text-align: center;position: relative;}
+		       text-align: center;position: relative;cursor: pointer;}
 		#box li:hover{background: #c00;color: #fff;}
 		#box li span{width: 32px;height: 32px;background: #c00;color: #fff;display: block;position: absolute;/*结对定位*/
-		     top: 0px;left: 0px;}
+		             top: 0px;left: 0px;}
 		#box li span{display: none;}
-		#box li .hover span{display: block;}
-		#box li  span .active{background:#fff;color: #c00; display: block;}
-		
+		#box li.hover span{display: block;}
+		#box li  span.active{background:#fff;color: #c00; display: block;}
+		#con {width: 1210px;margin: 0 auto;background: #fff;}
+		.black-JD-link {
+			    height: 469px;
+			    width: 100%;
+			    position: absolute;
+			    z-index: -2;
+			    top: 100px;
+			    background: transparent url("img/black.jpg") no-repeat scroll center top;
+						}
 	</style>
 	</head>
 	<body>
 <!--
 	作者：jiangjun_dao519@163.com
 	时间：2015-12-20
-	描述：顶端页面展示
--->
+	描述：顶端页面展示-->
+   <div style="position: relative">
+	     <a href="www.baidu.com" target="_blank" class="black-JD-link" ></a>
+    </div>	
+<div id="con">
 <nav class="navbar  navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -133,6 +144,7 @@
 	时间：2015-12-20
 	描述：轮播下面的展示页面
 -->
+ 
   <div class="jumbotron">
   	<div class="container">
   <h1>Hello, world!</h1>
@@ -217,6 +229,10 @@
 		<li>9F<span>Apple</span></li>
 	</ul>
 </div>
+<div id="con">
+	
+</div>
+<div >
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/slider.js"></script>
 <script type="text/javascript">
@@ -240,15 +256,18 @@ $(function() {
 //楼层梯形代码！－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－js
     $("#box li").hover(function(){
     	//鼠标选中事件
-    			$(this).addClass("hover");
-    			
+    		$(this).addClass("hover");
     },function(){
     	//鼠标离开事件
     		$(this).removeClass("hover");
     });
+    var _index = 0;
     $("#box li").click(function(){
     			$(this).find("span").addClass("active").parent().siblings("li").find("span").removeClass("active");
     });
+    var _top = $("#lt"+_index).offset().top//
+    //alert(_top);
+    $("body,html").animate({scrollTop:_top},500);
 </script>
 
 </body>

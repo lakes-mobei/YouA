@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>1111</title>
+		<style type="text/css">
+		*{margin: 0px;padding: 0px;}
+		#box{width: 32px;height: 360px;position: fixed;top: 200px;left: 30px;}
+		#box li{list-style: none;width: 32px;height: 32px;border-bottom: 1px dotted #CCC; font-size: 14px;line-height: 32px;
+		       text-align: center;position: relative;cursor: pointer;}
+		#box li:hover{background: #c00;color: #fff;}
+		#box li span{width: 32px;height: 32px;background: #c00;color: #fff;display: block;position: absolute;/*结对定位*/
+		             top: 0px;left: 0px;}
+		#box li span{display: none;}
+		#box li.hover span{display: block;}
+		#box li  span.active{background:#fff;color: #c00; display: block;}
+		#con {width: 1210px;margin: 0 auto;background: #FFFF00;}
+	</style>
+	</head>
+	<body>
+		<div id="box">
+	<ul>
+		<li>1F<span>服装</span></li>
+		<li>2F<span>坦克</span></li>
+		<li>3F<span>手机</span></li>
+		<li>4F<span>汽车</span></li>
+		<li>5F<span>飞机</span></li>
+		<li>6F<span>会见</span></li>
+		<li>7F<span>龙春</span></li>
+		<li>8F<span>小米</span></li>
+		<li>9F<span>Apple</span></li>
+	</ul>
+</div>
+<div id="con">
+	
+</div>
+<script src="js/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+//楼层梯形代码！－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－js
+    $("#box li").hover(function(){
+    	//鼠标选中事件
+    		$(this).addClass("hover");
+    },function(){
+    	//鼠标离开事件
+    		$(this).removeClass("hover");
+    });
+    var _index = 0;
+    $("#box li").click(function(){
+    			$(this).find("span").addClass("active").parent().siblings("li").find("span").removeClass("active");
+    });
+    var _top = $("#lt"+_index).offset().top//
+    //alert(_top);
+    $("body,html").animate({scrollTop:_top},500);
+    </script>
+	</body>
+</html>
